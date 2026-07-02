@@ -41,7 +41,7 @@ export function DesktopView({
   onCloseContextMenu,
 }: DesktopViewProps) {
   return (
-    <div className="view absolute inset-0 flex flex-col p-4 pb-[76px] md:p-5 md:pb-[76px]">
+    <div className="view absolute inset-0 hidden md:flex flex-col p-4 pb-[76px] md:p-5 md:pb-[76px]">
       <div className="relative z-[1] grid flex-1 content-start gap-2.5 overflow-y-auto p-2 [grid-template-columns:repeat(auto-fill,92px)] [grid-auto-rows:104px]">
         {shortcuts.map((shortcut) => (
           <div

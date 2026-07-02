@@ -30,7 +30,7 @@ export function MobileView({ shortcuts, onAddShortcut, onEditShortcut, onDeleteS
   const time = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
   return (
-    <div className="view absolute inset-0 flex flex-col overflow-y-auto px-4 pb-6 pt-3 md:hidden">
+    <div className="view absolute inset-0 flex flex-col overflow-y-auto px-4 pb-[76px] pt-3 md:hidden">
       <div className="flex items-center justify-between pb-2 pt-1 font-mono text-xs font-semibold text-[#8b919c]">
         <span>{time}</span>
         <div className="flex gap-1.5">
@@ -80,7 +80,7 @@ export function MobileView({ shortcuts, onAddShortcut, onEditShortcut, onDeleteS
         ))}
       </div>
 
-      <div className="grid grid-cols-4 gap-x-3 gap-y-4 pb-6 [grid-template-columns:repeat(4,1fr)]">
+      <div className="grid grid-cols-3 gap-x-3 gap-y-4 pb-6 sm:grid-cols-4">
         {items.map((shortcut) => (
           <button
             key={shortcut.id}
