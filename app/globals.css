@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b0c10;
+  --bg-panel: #111216;
+  --bg-elevated: #181a20;
+  --surface: rgba(24, 26, 32, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #e6e6e6;
+  --text-secondary: #8b919c;
+  --accent: #00f2ff;
+  --accent-dim: rgba(0, 242, 255, 0.12);
+  --accent-glow: 0 0 20px rgba(0, 242, 255, 0.25);
+  --green: #00ff9d;
+  --red: #ff4d6d;
+  --yellow: #ffd166;
+  --radius: 14px;
+  --radius-sm: 10px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+/* Boot */
+.boot-logo {
+  font-family: var(--font-mono);
+  text-shadow: var(--accent-glow);
+}
+.boot-progress {
+  animation: bootLoad 1.4s ease-out forwards;
+}
+@keyframes bootLoad {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* Window transitions */
+.window {
+  transition: opacity 0.15s, transform 0.15s;
+}
+.window.minimized {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px) scale(0.9);
+}
+
+/* Context menu */
+.context-menu {
+  transition: opacity 0.1s, transform 0.1s;
+}
+
+/* Command palette & start menu */
+.palette-box {
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6), var(--accent-glow);
+}
+.start-menu,
+.taskbar {
+  backdrop-filter: blur(24px);
 }
