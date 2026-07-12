@@ -28,12 +28,34 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Script            | Description                              |
-|-------------------|------------------------------------------|
-| `npm run dev`     | Start the development server             |
-| `npm run build`   | Create an optimized production build     |
-| `npm run start`   | Start the production server              |
-| `npm run lint`    | Run ESLint                               |
+| Script              | Description                              |
+|---------------------|------------------------------------------|
+| `npm run dev`       | Start the development server             |
+| `npm run build`     | Create an optimized production build     |
+| `npm run start`     | Start the production server              |
+| `npm run build:cf`  | Static export for Cloudflare (`out/`)    |
+| `npm run lint`      | Run ESLint                               |
+
+## Deployment (Cloudflare Pages)
+
+The app is client-only (no server features), so it deploys as a **static site**.
+
+1. Build the static export:
+
+   ```bash
+   npm run build:cf
+   ```
+
+   This runs `next build` with `output: 'export'` enabled (via `scripts/build-cf.mjs` + `next.config.ts`) and produces an `out/` folder of static assets.
+
+2. Upload to Cloudflare manually:
+   - Cloudflare Dashboard → **Workers & Pages → Create → Pages → Upload assets**.
+   - Select the **`out`** folder from the project root.
+   - No build command, framework preset, or `_routes.json` is required — it is already built and fully static.
+
+3. (Optional) Add a custom domain in the Cloudflare dashboard.
+
+> Shortcut favicons load from remote services (DuckDuckGo / LinkedIn) at runtime, and the shortcut list is stored in `localStorage` — both work fine over HTTPS on Cloudflare Pages.
 
 ## Project Structure
 
@@ -43,6 +65,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 - `lib/` — Utilities, default shortcuts, and helper functions.
 - `types/` — Shared TypeScript types.
 - `legacy/` — Earlier static HTML/CSS prototype.
+- `scripts/build-cf.mjs` — Cross-platform wrapper that enables the Cloudflare static export.
 
 ## License
 
