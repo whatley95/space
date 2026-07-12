@@ -1,0 +1,24 @@
+{
+  "naming": "camelCase, PascalCase, snake_case, kebab-case",
+  "structure": "app/, lib/, public/",
+  "patterns": [
+    "barrel index files present",
+    "has AGENTS.md"
+  ],
+  "stack": "TypeScript, React, Next.js, Node",
+  "ui": "react",
+  "styling": "tailwindcss",
+  "packageManager": "npm",
+  "entryPoints": [
+    "app/page.tsx"
+  ],
+  "scripts": [
+    "dev: next dev",
+    "build: next build",
+    "start: next start",
+    "lint: eslint"
+  ],
+  "styleSample": "\"use client\";\n\nimport { Shortcut } from \"@/types\";\nimport { getDisplayUrl, getInitials, normalizeUrl } from \"@/lib/data\";\n\ninterface AppSheetProps {\n  shortcut: Shortcut | null;\n  onClose: () => void;\n  onOpen: (s: Shortcut) => void;\n  onEdit: (s: Shortcut) => void;\n  onDelete: (s: Shortcut) => void;\n}\n\nexport function AppSheet({ shortcut, onClose, onOpen, onEdit, onDelete }: AppSheetProps) {\n  if (!shortcut) return null;\n\n  return (\n    <>\n      <div\n        className={`fixed inset-0 z-[105] bg-black/60 transition-opacity ${shortcut ? \"opacity-100\" : \"pointer-events-none opacity-0\"}`}\n        onClick={onClose}\n      />\n      <div\n        className={`fixed bottom-0 left-0 right-0 z-[110] rounded-t-[24px] border-t border-white/10 bg-[#111216] px-5 pb-7 pt-4 shadow-[0_-10px_40px_rgba(0,0,0,0.5)] transition-transform duration-300 ${\n          shortcut ? \"translate-y-0\" : \"translate-y-[110%]\"\n        }`}\n      >\n        <div className=\"mx-auto mb-4 h-1.5 w-10 rounded-full bg-white/15\" />\n        <div className=\"mb-6 flex items-center gap-4\">\n          <div\n            className=\"flex h-[70px] w-[70px] items-center justify-center rounded-[20px] font-mono text-[32px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)]\"\n            style={{ background: shortcut.color }}\n          >\n            {getInitials(shortcut.name)}\n          </div>\n          <div>\n            <h2 className=\"text-[22px] font-semibold\">{shortcut.name}</h2>\n            <p className=\"font-mono text-[13px] text-[#8b919c]\">{getDisplayUrl(normalizeUrl(shortcut.url))}</p>\n          </div>\n        </div>",
+  "agENTSmd": "<!-- BEGIN:nextjs-agent-rules -->\n# This is NOT the Next.js you know\n\nThis version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.\n<!-- END:nextjs-agent-rules -->\n",
+  "generatedAt": "2026-07-12T15:58:54.283Z"
+}

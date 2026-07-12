@@ -1,7 +1,7 @@
 "use client";
 
 import { WindowState, Shortcut } from "@/types";
-import { getInitials } from "@/lib/data";
+import { ShortcutIcon } from "./ShortcutIcon";
 
 interface TaskbarProps {
   windows: WindowState[];
@@ -48,11 +48,10 @@ export function Taskbar({
               className={`taskbar-pin relative flex h-[38px] w-[38px] items-center justify-center rounded-[10px] font-mono text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-white/10 ${
                 activeWindowId === win.id ? "border border-[#00f2ff] shadow-[0_0_12px_rgba(0,242,255,0.2)]" : "border-transparent bg-white/[0.04]"
               }`}
-              style={{ background: activeWindowId === win.id ? shortcut.color : undefined }}
               title={shortcut.name}
               onClick={() => onPinClick(win.id)}
             >
-              {getInitials(shortcut.name)}
+              <ShortcutIcon name={shortcut.name} url={shortcut.url} color={shortcut.color} size={38} className="rounded-[10px]" />
               {activeWindowId === win.id && <span className="absolute bottom-1 h-1 w-1 rounded-full bg-[#00f2ff] shadow-[0_0_20px_rgba(0,242,255,0.25)]" />}
             </button>
           );

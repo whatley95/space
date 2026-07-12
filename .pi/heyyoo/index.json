@@ -1,0 +1,763 @@
+{
+  "generatedAt": "2026-07-12T15:57:59.642Z",
+  "files": [
+    {
+      "file": "app/layout.tsx",
+      "symbols": [
+        {
+          "name": "metadata",
+          "kind": "const",
+          "line": 4,
+          "exported": true
+        },
+        {
+          "name": "viewport",
+          "kind": "const",
+          "line": 9,
+          "exported": true
+        },
+        {
+          "name": "RootLayout",
+          "kind": "function",
+          "line": 16,
+          "exported": true,
+          "signature": "export default function RootLayout({"
+        }
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "symbols": [
+        {
+          "name": "Home",
+          "kind": "function",
+          "line": 3,
+          "exported": true,
+          "signature": "export default function Home() {"
+        }
+      ]
+    },
+    {
+      "file": "components/AboutModal.tsx",
+      "symbols": [
+        {
+          "name": "AboutModalProps",
+          "kind": "interface",
+          "line": 3,
+          "exported": false
+        },
+        {
+          "name": "AboutModal",
+          "kind": "function",
+          "line": 8,
+          "exported": true,
+          "signature": "export function AboutModal({ open, onClose }: AboutModalProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/AppSheet.tsx",
+      "symbols": [
+        {
+          "name": "AppSheetProps",
+          "kind": "interface",
+          "line": 6,
+          "exported": false
+        },
+        {
+          "name": "AppSheet",
+          "kind": "function",
+          "line": 14,
+          "exported": true,
+          "signature": "export function AppSheet({ shortcut, onClose, onOpen, onEdit, onDelete }: AppSheetProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/BootScreen.tsx",
+      "symbols": [
+        {
+          "name": "BootScreen",
+          "kind": "function",
+          "line": 5,
+          "exported": true,
+          "signature": "export function BootScreen() {"
+        }
+      ]
+    },
+    {
+      "file": "components/CommandPalette.tsx",
+      "symbols": [
+        {
+          "name": "CommandPaletteProps",
+          "kind": "interface",
+          "line": 7,
+          "exported": false
+        },
+        {
+          "name": "CommandPalette",
+          "kind": "function",
+          "line": 14,
+          "exported": true,
+          "signature": "export function CommandPalette({ open, shortcuts, onOpenWindow, onClose }: CommandPaletteProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/ContextMenu.tsx",
+      "symbols": [
+        {
+          "name": "ContextMenuProps",
+          "kind": "interface",
+          "line": 6,
+          "exported": false
+        },
+        {
+          "name": "ContextMenu",
+          "kind": "function",
+          "line": 16,
+          "exported": true,
+          "signature": "export function ContextMenu({ shortcut, x, y, onOpen, onEdit, onDelete, onClose }: ContextMenuProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/DesktopView.tsx",
+      "symbols": [
+        {
+          "name": "DesktopViewProps",
+          "kind": "interface",
+          "line": 8,
+          "exported": false
+        },
+        {
+          "name": "DesktopView",
+          "kind": "function",
+          "line": 26,
+          "exported": true,
+          "signature": "export function DesktopView({"
+        }
+      ]
+    },
+    {
+      "file": "components/MobileView.tsx",
+      "symbols": [
+        {
+          "name": "MobileViewProps",
+          "kind": "interface",
+          "line": 8,
+          "exported": false
+        },
+        {
+          "name": "MobileView",
+          "kind": "function",
+          "line": 16,
+          "exported": true,
+          "signature": "export function MobileView({ shortcuts, onAddShortcut, onEditShortcut, onDeleteShortcut, onOpenUrl }: MobileViewProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/ShortcutModal.tsx",
+      "symbols": [
+        {
+          "name": "ShortcutModalProps",
+          "kind": "interface",
+          "line": 7,
+          "exported": false
+        },
+        {
+          "name": "ShortcutModal",
+          "kind": "function",
+          "line": 14,
+          "exported": true,
+          "signature": "export function ShortcutModal({ shortcut, open, onClose, onSave }: ShortcutModalProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/StartMenu.tsx",
+      "symbols": [
+        {
+          "name": "StartMenuProps",
+          "kind": "interface",
+          "line": 7,
+          "exported": false
+        },
+        {
+          "name": "StartMenu",
+          "kind": "function",
+          "line": 16,
+          "exported": true,
+          "signature": "export function StartMenu({ open, shortcuts, onOpenWindow, onAddShortcut, onAbout, onClose }: StartMenuProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/Taskbar.tsx",
+      "symbols": [
+        {
+          "name": "TaskbarProps",
+          "kind": "interface",
+          "line": 6,
+          "exported": false
+        },
+        {
+          "name": "Taskbar",
+          "kind": "function",
+          "line": 17,
+          "exported": true,
+          "signature": "export function Taskbar({"
+        }
+      ]
+    },
+    {
+      "file": "components/Toast.tsx",
+      "symbols": [
+        {
+          "name": "ToastProps",
+          "kind": "interface",
+          "line": 3,
+          "exported": false
+        },
+        {
+          "name": "Toast",
+          "kind": "function",
+          "line": 7,
+          "exported": true,
+          "signature": "export function Toast({ message }: ToastProps) {"
+        }
+      ]
+    },
+    {
+      "file": "components/Wallpaper.tsx",
+      "symbols": [
+        {
+          "name": "Particle",
+          "kind": "interface",
+          "line": 5,
+          "exported": false
+        },
+        {
+          "name": "Wallpaper",
+          "kind": "function",
+          "line": 13,
+          "exported": true,
+          "signature": "export function Wallpaper() {"
+        }
+      ]
+    },
+    {
+      "file": "components/Window.tsx",
+      "symbols": [
+        {
+          "name": "WindowProps",
+          "kind": "interface",
+          "line": 8,
+          "exported": false
+        },
+        {
+          "name": "Window",
+          "kind": "function",
+          "line": 20,
+          "exported": true,
+          "signature": "export function Window({"
+        }
+      ]
+    },
+    {
+      "file": "components/Workspace.tsx",
+      "symbols": [
+        {
+          "name": "Workspace",
+          "kind": "function",
+          "line": 18,
+          "exported": true,
+          "signature": "export function Workspace() {"
+        }
+      ]
+    },
+    {
+      "file": "eslint.config.mjs",
+      "symbols": [
+        {
+          "name": "eslintConfig",
+          "kind": "const",
+          "line": 5,
+          "exported": false
+        }
+      ]
+    },
+    {
+      "file": "hooks/useLocalStorage.ts",
+      "symbols": [
+        {
+          "name": "useLocalStorage",
+          "kind": "function",
+          "line": 5,
+          "exported": true,
+          "signature": "export function useLocalStorage<T>(key: string, initialValue: T) {"
+        }
+      ]
+    },
+    {
+      "file": "legacy/script.js",
+      "symbols": [
+        {
+          "name": "COLORS",
+          "kind": "const",
+          "line": 1,
+          "exported": false
+        },
+        {
+          "name": "DEFAULT_SHORTCUTS",
+          "kind": "const",
+          "line": 14,
+          "exported": false
+        },
+        {
+          "name": "state",
+          "kind": "const",
+          "line": 27,
+          "exported": false
+        },
+        {
+          "name": "$",
+          "kind": "const",
+          "line": 38,
+          "exported": false
+        },
+        {
+          "name": "loadShortcuts",
+          "kind": "function",
+          "line": 40,
+          "exported": false,
+          "signature": "function loadShortcuts() {"
+        },
+        {
+          "name": "saveShortcuts",
+          "kind": "function",
+          "line": 49,
+          "exported": false,
+          "signature": "function saveShortcuts() {"
+        },
+        {
+          "name": "getInitials",
+          "kind": "function",
+          "line": 53,
+          "exported": false,
+          "signature": "function getInitials(name) {"
+        },
+        {
+          "name": "normalizeUrl",
+          "kind": "function",
+          "line": 59,
+          "exported": false,
+          "signature": "function normalizeUrl(url) {"
+        },
+        {
+          "name": "getDisplayUrl",
+          "kind": "function",
+          "line": 66,
+          "exported": false,
+          "signature": "function getDisplayUrl(url) {"
+        },
+        {
+          "name": "getGreeting",
+          "kind": "function",
+          "line": 74,
+          "exported": false,
+          "signature": "function getGreeting() {"
+        },
+        {
+          "name": "createIconEl",
+          "kind": "function",
+          "line": 81,
+          "exported": false,
+          "signature": "function createIconEl(shortcut, cls = 'desktop-icon') {"
+        },
+        {
+          "name": "initWallpaper",
+          "kind": "function",
+          "line": 90,
+          "exported": false,
+          "signature": "function initWallpaper() {"
+        },
+        {
+          "name": "filteredShortcuts",
+          "kind": "function",
+          "line": 160,
+          "exported": false,
+          "signature": "function filteredShortcuts() {"
+        },
+        {
+          "name": "renderDesktopIcons",
+          "kind": "function",
+          "line": 169,
+          "exported": false,
+          "signature": "function renderDesktopIcons() {"
+        },
+        {
+          "name": "renderMobile",
+          "kind": "function",
+          "line": 196,
+          "exported": false,
+          "signature": "function renderMobile() {"
+        },
+        {
+          "name": "renderCategories",
+          "kind": "function",
+          "line": 212,
+          "exported": false,
+          "signature": "function renderCategories() {"
+        },
+        {
+          "name": "renderColorPicker",
+          "kind": "function",
+          "line": 229,
+          "exported": false,
+          "signature": "function renderColorPicker() {"
+        },
+        {
+          "name": "renderStartMenu",
+          "kind": "function",
+          "line": 245,
+          "exported": false,
+          "signature": "function renderStartMenu() {"
+        },
+        {
+          "name": "renderTaskbar",
+          "kind": "function",
+          "line": 272,
+          "exported": false,
+          "signature": "function renderTaskbar() {"
+        },
+        {
+          "name": "renderAll",
+          "kind": "function",
+          "line": 295,
+          "exported": false,
+          "signature": "function renderAll() {"
+        },
+        {
+          "name": "openWindow",
+          "kind": "function",
+          "line": 304,
+          "exported": false,
+          "signature": "function openWindow(shortcut) {"
+        },
+        {
+          "name": "createWindowEl",
+          "kind": "function",
+          "line": 333,
+          "exported": false,
+          "signature": "function createWindowEl(win, shortcut) {"
+        },
+        {
+          "name": "getWindowEl",
+          "kind": "function",
+          "line": 374,
+          "exported": false,
+          "signature": "function getWindowEl(id) { return document.getElementById(id); }"
+        },
+        {
+          "name": "focusWindow",
+          "kind": "function",
+          "line": 376,
+          "exported": false,
+          "signature": "function focusWindow(id) {"
+        },
+        {
+          "name": "minimizeWindow",
+          "kind": "function",
+          "line": 386,
+          "exported": false,
+          "signature": "function minimizeWindow(id) {"
+        },
+        {
+          "name": "restoreWindow",
+          "kind": "function",
+          "line": 398,
+          "exported": false,
+          "signature": "function restoreWindow(id) {"
+        },
+        {
+          "name": "maximizeWindow",
+          "kind": "function",
+          "line": 406,
+          "exported": false,
+          "signature": "function maximizeWindow(id) {"
+        },
+        {
+          "name": "closeWindow",
+          "kind": "function",
+          "line": 426,
+          "exported": false,
+          "signature": "function closeWindow(id) {"
+        },
+        {
+          "name": "drag",
+          "kind": "variable",
+          "line": 437,
+          "exported": false
+        },
+        {
+          "name": "startDrag",
+          "kind": "function",
+          "line": 438,
+          "exported": false,
+          "signature": "function startDrag(e, id) {"
+        },
+        {
+          "name": "onDrag",
+          "kind": "function",
+          "line": 452,
+          "exported": false,
+          "signature": "function onDrag(e) {"
+        },
+        {
+          "name": "stopDrag",
+          "kind": "function",
+          "line": 463,
+          "exported": false,
+          "signature": "function stopDrag() {"
+        },
+        {
+          "name": "showContextMenu",
+          "kind": "function",
+          "line": 470,
+          "exported": false,
+          "signature": "function showContextMenu(e, shortcut) {"
+        },
+        {
+          "name": "hideContextMenu",
+          "kind": "function",
+          "line": 492,
+          "exported": false,
+          "signature": "function hideContextMenu() {"
+        },
+        {
+          "name": "togglePalette",
+          "kind": "function",
+          "line": 497,
+          "exported": false,
+          "signature": "function togglePalette(show) {"
+        },
+        {
+          "name": "renderPaletteResults",
+          "kind": "function",
+          "line": 509,
+          "exported": false,
+          "signature": "function renderPaletteResults(term) {"
+        },
+        {
+          "name": "toggleStartMenu",
+          "kind": "function",
+          "line": 545,
+          "exported": false,
+          "signature": "function toggleStartMenu(show) {"
+        },
+        {
+          "name": "openAppSheet",
+          "kind": "function",
+          "line": 560,
+          "exported": false,
+          "signature": "function openAppSheet(shortcut) {"
+        },
+        {
+          "name": "closeAppSheet",
+          "kind": "function",
+          "line": 572,
+          "exported": false,
+          "signature": "function closeAppSheet() {"
+        },
+        {
+          "name": "openShortcutModal",
+          "kind": "function",
+          "line": 579,
+          "exported": false,
+          "signature": "function openShortcutModal(shortcut = null) {"
+        },
+        {
+          "name": "closeShortcutModal",
+          "kind": "function",
+          "line": 592,
+          "exported": false,
+          "signature": "function closeShortcutModal() {"
+        },
+        {
+          "name": "handleSaveShortcut",
+          "kind": "function",
+          "line": 597,
+          "exported": false,
+          "signature": "function handleSaveShortcut(e) {"
+        },
+        {
+          "name": "deleteShortcut",
+          "kind": "function",
+          "line": 627,
+          "exported": false,
+          "signature": "function deleteShortcut() {"
+        },
+        {
+          "name": "deleteShortcutById",
+          "kind": "function",
+          "line": 633,
+          "exported": false,
+          "signature": "function deleteShortcutById(id) {"
+        },
+        {
+          "name": "showToast",
+          "kind": "function",
+          "line": 644,
+          "exported": false,
+          "signature": "function showToast(message) {"
+        },
+        {
+          "name": "escapeHtml",
+          "kind": "function",
+          "line": 651,
+          "exported": false,
+          "signature": "function escapeHtml(str) {"
+        },
+        {
+          "name": "updateClock",
+          "kind": "function",
+          "line": 656,
+          "exported": false,
+          "signature": "function updateClock() {"
+        },
+        {
+          "name": "finishBoot",
+          "kind": "function",
+          "line": 664,
+          "exported": false,
+          "signature": "function finishBoot() {"
+        },
+        {
+          "name": "init",
+          "kind": "function",
+          "line": 671,
+          "exported": false,
+          "signature": "function init() {"
+        }
+      ]
+    },
+    {
+      "file": "lib/data.ts",
+      "symbols": [
+        {
+          "name": "COLORS",
+          "kind": "const",
+          "line": 3,
+          "exported": true
+        },
+        {
+          "name": "DEFAULT_SHORTCUTS",
+          "kind": "const",
+          "line": 16,
+          "exported": true
+        },
+        {
+          "name": "getInitials",
+          "kind": "function",
+          "line": 29,
+          "exported": true,
+          "signature": "export function getInitials(name: string): string {"
+        },
+        {
+          "name": "normalizeUrl",
+          "kind": "function",
+          "line": 35,
+          "exported": true,
+          "signature": "export function normalizeUrl(url: string): string {"
+        },
+        {
+          "name": "getDisplayUrl",
+          "kind": "function",
+          "line": 42,
+          "exported": true,
+          "signature": "export function getDisplayUrl(url: string): string {"
+        },
+        {
+          "name": "getGreeting",
+          "kind": "function",
+          "line": 50,
+          "exported": true,
+          "signature": "export function getGreeting(): string {"
+        },
+        {
+          "name": "NON_EMBEDDABLE_DOMAINS",
+          "kind": "const",
+          "line": 57,
+          "exported": false
+        },
+        {
+          "name": "isEmbeddable",
+          "kind": "function",
+          "line": 88,
+          "exported": true,
+          "signature": "export function isEmbeddable(url: string): boolean {"
+        },
+        {
+          "name": "escapeHtml",
+          "kind": "function",
+          "line": 97,
+          "exported": true,
+          "signature": "export function escapeHtml(str: string): string {"
+        }
+      ]
+    },
+    {
+      "file": "next.config.ts",
+      "symbols": [
+        {
+          "name": "nextConfig",
+          "kind": "const",
+          "line": 3,
+          "exported": false
+        }
+      ]
+    },
+    {
+      "file": "postcss.config.mjs",
+      "symbols": [
+        {
+          "name": "config",
+          "kind": "const",
+          "line": 1,
+          "exported": false
+        }
+      ]
+    },
+    {
+      "file": "types/index.ts",
+      "symbols": [
+        {
+          "name": "LaunchMode",
+          "kind": "type",
+          "line": 1,
+          "exported": true
+        },
+        {
+          "name": "Shortcut",
+          "kind": "interface",
+          "line": 3,
+          "exported": true
+        },
+        {
+          "name": "WindowState",
+          "kind": "interface",
+          "line": 12,
+          "exported": true
+        },
+        {
+          "name": "ColorOption",
+          "kind": "interface",
+          "line": 24,
+          "exported": true
+        }
+      ]
+    }
+  ]
+}

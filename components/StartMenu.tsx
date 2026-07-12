@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Shortcut } from "@/types";
-import { getInitials } from "@/lib/data";
+import { ShortcutIcon } from "./ShortcutIcon";
 
 interface StartMenuProps {
   open: boolean;
@@ -15,10 +15,6 @@ interface StartMenuProps {
 
 export function StartMenu({ open, shortcuts, onOpenWindow, onAddShortcut, onAbout, onClose }: StartMenuProps) {
   const [term, setTerm] = useState("");
-
-  useEffect(() => {
-    if (open) setTerm("");
-  }, [open]);
 
   if (!open) return null;
 
@@ -56,12 +52,7 @@ export function StartMenu({ open, shortcuts, onOpenWindow, onAddShortcut, onAbou
               className="flex flex-col items-center gap-1.5 rounded-[10px] p-2 transition-colors hover:bg-white/10"
               onClick={() => { onOpenWindow(shortcut); onClose(); }}
             >
-              <div
-                className="flex h-11 w-11 items-center justify-center rounded-xl font-mono text-lg font-bold text-white"
-                style={{ background: shortcut.color }}
-              >
-                {getInitials(shortcut.name)}
-              </div>
+              <ShortcutIcon name={shortcut.name} url={shortcut.url} color={shortcut.color} size={44} className="rounded-xl" />
               <div className="max-w-[80px] truncate text-center text-[11px]">{shortcut.name}</div>
             </button>
           ))

@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Shortcut, WindowState } from "@/types";
-import { getInitials } from "@/lib/data";
+import { getGreeting } from "@/lib/data";
+import { ShortcutIcon } from "./ShortcutIcon";
 import { Window } from "./Window";
 import { ContextMenu } from "./ContextMenu";
 
@@ -40,9 +42,21 @@ export function DesktopView({
   onContextMenu,
   onCloseContextMenu,
 }: DesktopViewProps) {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  const clock = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  const today = now.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
   return (
     <div className="view absolute inset-0 hidden md:flex flex-col p-4 pb-[76px] md:p-5 md:pb-[76px]">
-      <div className="relative z-[1] grid flex-1 content-start gap-2.5 overflow-y-auto p-2 [grid-template-columns:repeat(auto-fill,92px)] [grid-auto-rows:104px]">
+      <div className="pointer-events-none mb-5 select-none pl-1">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#00f2ff]">{getGreeting()}</div>
+        <div className="text-4xl font-bold tracking-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]">{clock}</div>
+        <div className="text-sm text-[#8b919c]">{today}</div>
+      </div>
+      <div className="relative z-[1] grid flex-1 content-start gap-2.5 overflow-y-auto overflow-x-hidden p-2 [grid-template-columns:repeat(6,92px)] [grid-auto-rows:104px]">
         {shortcuts.map((shortcut) => (
           <div
             key={shortcut.id}
@@ -54,12 +68,13 @@ export function DesktopView({
             onKeyDown={(e) => e.key === "Enter" && onOpenWindow(shortcut)}
             onContextMenu={(e) => onContextMenu(shortcut, e.clientX, e.clientY)}
           >
-            <div
-              className="mb-2 flex h-[54px] w-[54px] items-center justify-center rounded-[14px] font-mono text-[22px] font-bold text-white shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
-              style={{ background: shortcut.color }}
-            >
-              {getInitials(shortcut.name)}
-            </div>
+            <ShortcutIcon
+              name={shortcut.name}
+              url={shortcut.url}
+              color={shortcut.color}
+              size={54}
+              className="mb-2 rounded-[14px] shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
+            />
             <div className="line-clamp-2 max-w-[84px] text-center text-xs leading-tight text-[#e6e6e6] [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
               {shortcut.name}
             </div>

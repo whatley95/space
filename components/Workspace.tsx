@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Shortcut, WindowState } from "@/types";
 import { DEFAULT_SHORTCUTS, isEmbeddable, normalizeUrl } from "@/lib/data";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
@@ -17,6 +17,8 @@ import { Toast } from "./Toast";
 
 export function Workspace() {
   const [shortcuts, setShortcuts, hydrated] = useLocalStorage<Shortcut[]>("devos_shortcuts", DEFAULT_SHORTCUTS);
+  const [shortcutsVersion, setShortcutsVersion] = useLocalStorage<number>("devos_shortcuts_version", 0);
+  const SHORTCUTS_VERSION = 5;
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
   const [nextZ, setNextZ] = useState(100);
@@ -36,6 +38,11 @@ export function Workspace() {
 
   const openInTab = useCallback((shortcut: Shortcut) => {
     window.open(normalizeUrl(shortcut.url), "_blank");
+  }, []);
+
+  const focusWindow = useCallback((id: string) => {
+    setActiveWindowId(id);
+    setNextZ((z) => z + 1);
   }, []);
 
   const openWindow = useCallback(
@@ -75,13 +82,8 @@ export function Workspace() {
       setActiveWindowId(id);
       setNextZ((z) => z + 1);
     },
-    [windows, openInTab, showToast]
+    [windows, openInTab, showToast, focusWindow]
   );
-
-  const focusWindow = useCallback((id: string) => {
-    setActiveWindowId(id);
-    setNextZ((z) => z + 1);
-  }, []);
 
   const minimizeWindow = useCallback(
     (id: string) => {
@@ -194,6 +196,26 @@ export function Workspace() {
     window.open(normalizeUrl(shortcut.url), "_blank");
   }, []);
 
+  // On a shortcut schema version bump, merge defaults with the user's stored list:
+  // drop legacy defaults that were removed, add new defaults, and keep user-created shortcuts.
+  useEffect(() => {
+    if (!hydrated) return;
+    if (shortcutsVersion < SHORTCUTS_VERSION) {
+      const EVER_DEFAULT_IDS = new Set([
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+      ]);
+      setShortcuts((prev) => {
+        const kept = prev.filter(
+          (s) => !EVER_DEFAULT_IDS.has(s.id) || DEFAULT_SHORTCUTS.some((d) => d.id === s.id)
+        );
+        const keptIds = new Set(kept.map((s) => s.id));
+        const added = DEFAULT_SHORTCUTS.filter((d) => !keptIds.has(d.id));
+        return [...kept, ...added];
+      });
+      setShortcutsVersion(SHORTCUTS_VERSION);
+    }
+  }, [hydrated, shortcutsVersion, setShortcuts, setShortcutsVersion]);
+
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -264,6 +286,7 @@ export function Workspace() {
       />
 
       <StartMenu
+        key={startOpen ? "start-open" : "start-closed"}
         open={startOpen}
         shortcuts={shortcuts}
         onOpenWindow={openWindow}
@@ -273,6 +296,7 @@ export function Workspace() {
       />
 
       <CommandPalette
+        key={paletteOpen ? "palette-open" : "palette-closed"}
         open={paletteOpen}
         shortcuts={shortcuts}
         onOpenWindow={openWindow}
@@ -280,6 +304,7 @@ export function Workspace() {
       />
 
       <ShortcutModal
+        key={modalOpen ? `modal-${modalShortcut?.id ?? "new"}` : "modal-closed"}
         shortcut={modalShortcut}
         open={modalOpen}
         onClose={() => setModalOpen(false)}

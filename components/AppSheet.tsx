@@ -1,7 +1,8 @@
 "use client";
 
 import { Shortcut } from "@/types";
-import { getDisplayUrl, getInitials, normalizeUrl } from "@/lib/data";
+import { getDisplayUrl, normalizeUrl } from "@/lib/data";
+import { ShortcutIcon } from "./ShortcutIcon";
 
 interface AppSheetProps {
   shortcut: Shortcut | null;
@@ -27,12 +28,7 @@ export function AppSheet({ shortcut, onClose, onOpen, onEdit, onDelete }: AppShe
       >
         <div className="mx-auto mb-4 h-1.5 w-10 rounded-full bg-white/15" />
         <div className="mb-6 flex items-center gap-4">
-          <div
-            className="flex h-[70px] w-[70px] items-center justify-center rounded-[20px] font-mono text-[32px] font-bold text-white shadow-[0_8px_24px_rgba(0,0,0,0.3)]"
-            style={{ background: shortcut.color }}
-          >
-            {getInitials(shortcut.name)}
-          </div>
+          <ShortcutIcon name={shortcut.name} url={shortcut.url} color={shortcut.color} size={70} className="rounded-[20px] shadow-[0_8px_24px_rgba(0,0,0,0.3)]" />
           <div>
             <h2 className="text-[22px] font-semibold">{shortcut.name}</h2>
             <p className="font-mono text-[13px] text-[#8b919c]">{getDisplayUrl(normalizeUrl(shortcut.url))}</p>

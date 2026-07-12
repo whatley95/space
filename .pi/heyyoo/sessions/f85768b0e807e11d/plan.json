@@ -1,0 +1,65 @@
+{
+  "plan": {
+    "summary": "Add a favicon helper and reusable ShortcutIcon component to replace inline initials tiles across 7 components, then add a greeting + live clock widget to the desktop view.",
+    "todo": [
+      {
+        "description": "Add `getFaviconUrl(url: string): string` to `lib/data.ts` — derive host from `new URL(normalizeUrl(url)).host` and return `https://icons.duckduckgo.com/ip3/${host}.ico` (wrap in try/catch returning empty string on failure).",
+        "priority": "high",
+        "dependsOn": []
+      },
+      {
+        "description": "Create `components/ShortcutIcon.tsx` as a client component accepting `name`, `url`, `color`, and optional `size`/`className` props; render favicon `<img>` from `getFaviconUrl` over an initials-on-color background div (using `getInitials` + `color`), swap to initials via `onError` state.",
+        "priority": "high",
+        "dependsOn": [
+          1
+        ]
+      },
+      {
+        "description": "Replace the inline initials `<div>` with `<ShortcutIcon name={...} url={...} color={...} />` in `components/DesktopView.tsx` and `components/Taskbar.tsx` and `components/StartMenu.tsx` and `components/CommandPalette.tsx` and `components/AppSheet.tsx` and `components/Window.tsx` and `components/MobileView.tsx`; import `ShortcutIcon` and remove now-unused `getInitials` imports where applicable.",
+        "priority": "high",
+        "dependsOn": [
+          2
+        ]
+      },
+      {
+        "description": "Add a desktop greeting + live clock widget to `components/DesktopView.tsx` (md+ only via Tailwind `hidden md:block`): use `getGreeting()` from `lib/data.ts` for the greeting text and `useState` + `useEffect` with `setInterval(1000)` to drive a ticking `HH:MM` (or `HH:MM:ss`) clock; style subtle dark glassy (e.g., `bg-black/30 backdrop-blur border border-white/10 rounded-xl`).",
+        "priority": "medium",
+        "dependsOn": [
+          2
+        ]
+      },
+      {
+        "description": "Run `npx tsc --noEmit` and `npx eslint` from the project root; fix any TypeScript or ESLint errors introduced by the new code.",
+        "priority": "high",
+        "dependsOn": [
+          3,
+          4
+        ]
+      }
+    ],
+    "acceptanceCriteria": [
+      "GitHub and Portfolio shortcuts render favicon images from icons.duckduckgo.com in all 7 components when the network request succeeds.",
+      "If a favicon image fails to load, the ShortcutIcon falls back to the initials-on-color tile using `getInitials` and the shortcut's `color`.",
+      "DesktopView shows a greeting (from `getGreeting()`) and a live clock that updates every second, visible only on md+ breakpoints.",
+      "`npx tsc --noEmit` exits with no errors.",
+      "`npx eslint` exits with no errors."
+    ]
+  },
+  "completedSteps": 1,
+  "totalSteps": 5,
+  "reviewRounds": [
+    1,
+    2,
+    0,
+    0,
+    0
+  ],
+  "reviewedSteps": [
+    true,
+    false,
+    false,
+    false,
+    false
+  ],
+  "judgeCompleted": false
+}

@@ -2,7 +2,8 @@
 
 import { useState, useMemo } from "react";
 import { Shortcut } from "@/types";
-import { getGreeting, getInitials } from "@/lib/data";
+import { getGreeting } from "@/lib/data";
+import { ShortcutIcon } from "./ShortcutIcon";
 import { AppSheet } from "./AppSheet";
 
 interface MobileViewProps {
@@ -87,12 +88,7 @@ export function MobileView({ shortcuts, onAddShortcut, onEditShortcut, onDeleteS
             className="flex flex-col items-center gap-2 active:scale-95"
             onClick={() => setSelected(shortcut)}
           >
-            <div
-              className="flex h-[62px] w-[62px] items-center justify-center rounded-[18px] font-mono text-[26px] font-bold text-white shadow-[0_6px_20px_rgba(0,0,0,0.35)]"
-              style={{ background: shortcut.color }}
-            >
-              {getInitials(shortcut.name)}
-            </div>
+            <ShortcutIcon name={shortcut.name} url={shortcut.url} color={shortcut.color} size={62} className="rounded-[18px] shadow-[0_6px_20px_rgba(0,0,0,0.35)]" />
             <div className="line-clamp-2 max-w-[76px] text-center text-xs leading-tight">{shortcut.name}</div>
           </button>
         ))}

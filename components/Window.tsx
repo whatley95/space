@@ -2,7 +2,7 @@
 
 import { useRef, useCallback } from "react";
 import { Shortcut, WindowState } from "@/types";
-import { escapeHtml, getInitials, normalizeUrl } from "@/lib/data";
+import { escapeHtml, normalizeUrl } from "@/lib/data";
 
 
 interface WindowProps {

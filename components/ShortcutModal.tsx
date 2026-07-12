@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Shortcut, ColorOption } from "@/types";
 import { COLORS } from "@/lib/data";
 
@@ -12,21 +12,11 @@ interface ShortcutModalProps {
 }
 
 export function ShortcutModal({ shortcut, open, onClose, onSave }: ShortcutModalProps) {
-  const [name, setName] = useState("");
-  const [url, setUrl] = useState("");
-  const [category, setCategory] = useState("Code");
-  const [color, setColor] = useState(COLORS[0].value);
-  const [launchMode, setLaunchMode] = useState<"window" | "tab">("window");
-
-  useEffect(() => {
-    if (open) {
-      setName(shortcut?.name ?? "");
-      setUrl(shortcut?.url ?? "");
-      setCategory(shortcut?.category ?? "Code");
-      setColor(shortcut?.color ?? COLORS[0].value);
-      setLaunchMode(shortcut?.launchMode ?? "window");
-    }
-  }, [open, shortcut]);
+  const [name, setName] = useState(shortcut?.name ?? "");
+  const [url, setUrl] = useState(shortcut?.url ?? "");
+  const [category, setCategory] = useState(shortcut?.category ?? "Code");
+  const [color, setColor] = useState(shortcut?.color ?? COLORS[0].value);
+  const [launchMode, setLaunchMode] = useState<"window" | "tab">(shortcut?.launchMode ?? "window");
 
   if (!open) return null;
 
@@ -79,6 +69,7 @@ export function ShortcutModal({ shortcut, open, onClose, onSave }: ShortcutModal
               <option>Code</option>
               <option>Design</option>
               <option>Productivity</option>
+              <option>Tools</option>
               <option>Cloud</option>
               <option>Media</option>
               <option>Social</option>

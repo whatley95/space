@@ -14,16 +14,12 @@ export const COLORS: ColorOption[] = [
 ];
 
 export const DEFAULT_SHORTCUTS: Shortcut[] = [
-  { id: "1", name: "GitHub", url: "https://github.com/whatley95", category: "Code", color: "#24292f", launchMode: "tab" },
-  { id: "2", name: "VS Code Web", url: "https://vscode.dev", category: "Code", color: "#007acc" },
-  { id: "3", name: "Vercel", url: "https://vercel.com", category: "Cloud", color: "#000000" },
-  { id: "4", name: "Figma", url: "https://www.figma.com", category: "Design", color: "#f24e1e" },
-  { id: "5", name: "Notion", url: "https://www.notion.so", category: "Productivity", color: "#000000" },
-  { id: "6", name: "Stack Overflow", url: "https://stackoverflow.com", category: "Code", color: "#f48024" },
-  { id: "7", name: "MDN", url: "https://developer.mozilla.org", category: "Code", color: "#000000" },
-  { id: "8", name: "Dribbble", url: "https://dribbble.com", category: "Design", color: "#ea4c89" },
-  { id: "9", name: "CodePen", url: "https://codepen.io", category: "Code", color: "#1e1f26" },
-  { id: "10", name: "Spotify", url: "https://open.spotify.com", category: "Media", color: "#1db954" },
+  { id: "1", name: "GitHub", url: "https://github.com/whatley95", category: "Personal", color: "#24292f", launchMode: "tab" },
+  { id: "11", name: "Portfolio", url: "https://portfolio.whatley.xyz/", category: "Personal", color: "#8b5cf6", launchMode: "tab" },
+  { id: "12", name: "JSON Helper", url: "https://jsonhelper.pages.dev/", category: "Tools", color: "#ffd166", launchMode: "tab" },
+  { id: "13", name: "Base64 Util", url: "https://base64util.pages.dev/", category: "Tools", color: "#3b82f6", launchMode: "tab" },
+  { id: "14", name: "QR Code Util", url: "https://qrutil.pages.dev/", category: "Tools", color: "#22c55e", launchMode: "tab" },
+  { id: "15", name: "LinkedIn", url: "https://linkedin.whatley.xyz/", category: "Personal", color: "#0a66c2", launchMode: "tab" },
 ];
 
 export function getInitials(name: string): string {
@@ -44,6 +40,22 @@ export function getDisplayUrl(url: string): string {
     return new URL(url).hostname.replace(/^www\./, "");
   } catch {
     return url;
+  }
+}
+
+export function getFaviconUrl(url: string): string {
+  try {
+    const host = new URL(normalizeUrl(url)).hostname.toLowerCase();
+    if (!host) return "";
+    const BRAND_FAVICONS: Record<string, string> = {
+      linkedin: "https://www.linkedin.com/favicon.ico",
+    };
+    for (const [key, icon] of Object.entries(BRAND_FAVICONS)) {
+      if (host.includes(key)) return icon;
+    }
+    return `https://icons.duckduckgo.com/ip3/${host}.ico`;
+  } catch {
+    return "";
   }
 }
 

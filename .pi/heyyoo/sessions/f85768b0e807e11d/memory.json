@@ -1,0 +1,66 @@
+{
+  "files": {
+    "components/startmenu.tsx": {
+      "file": "components/startmenu.tsx",
+      "issues": [
+        {
+          "severity": "high",
+          "issue": "eslint error: Calling setState synchronously within an effect can trigger cascading renders (`setTerm` inside `useEffect`). This prevents `npx eslint` from passing, which is an acceptance criterion.",
+          "suggestion": "Remove the effect and instead reset state by giving the StartMenu container a `key` that changes when `open` changes (e.g., `key={open ? 'open' : 'closed'}`) to force remount.",
+          "timestamp": "2026-07-12T16:33:25.858Z"
+        }
+      ]
+    },
+    "components/commandpalette.tsx": {
+      "file": "components/commandpalette.tsx",
+      "issues": [
+        {
+          "severity": "high",
+          "issue": "eslint error: Calling setState synchronously within an effect (`setTerm`, `setSelected` in the `open` effect). Breaks eslint acceptance criterion.",
+          "suggestion": "Use a `key` on the CommandPalette wrapper based on `open` to force remount when opening, removing the need for the effect.",
+          "timestamp": "2026-07-12T16:33:25.858Z"
+        },
+        {
+          "severity": "high",
+          "issue": "eslint error: `setSelected(0)` inside the `term` dependency effect triggers cascading renders. Breaks eslint acceptance criterion.",
+          "suggestion": "Move the selected reset into the `onChange` handler or combine it with `setTerm` using a functional updater, then remove the effect.",
+          "timestamp": "2026-07-12T16:33:25.858Z"
+        }
+      ]
+    },
+    "components/desktopview.tsx": {
+      "file": "components/desktopview.tsx",
+      "issues": [
+        {
+          "severity": "low",
+          "issue": "Grid columns changed from `repeat(auto-fill, 92px)` to `repeat(6, 92px)`, which may overflow or misalign on narrower desktop viewports and is not part of the acceptance criteria.",
+          "suggestion": "Revert to `repeat(auto-fill, 92px)` unless the fixed 6‑column layout is explicitly required and the container width is guaranteed to be ≥ 6×92px.",
+          "timestamp": "2026-07-12T16:33:25.858Z"
+        }
+      ]
+    },
+    "components/taskbar.tsx": {
+      "file": "components/taskbar.tsx",
+      "issues": [
+        {
+          "severity": "low",
+          "issue": "Removed the inline `style={{ background: activeWindowId === win.id ? shortcut.color : undefined }}` that highlighted active window pins with the shortcut’s color. Active pins now only have a border and shadow, losing the color fill.",
+          "suggestion": "If the color highlight was intentional, add a low‑opacity background using the shortcut’s color when active (e.g., `style={{ background: activeWindowId === win.id ? shortcut.color + '33' : undefined }}`).",
+          "timestamp": "2026-07-12T16:33:25.858Z"
+        }
+      ]
+    },
+    "components/workspace.tsx": {
+      "file": "components/workspace.tsx",
+      "issues": [
+        {
+          "severity": "high",
+          "issue": "The version‑reseed effect unconditionally replaces all user shortcuts with DEFAULT_SHORTCUTS when the version bumps. This destroys any user‑created shortcuts, even though the comment claims user additions persist.",
+          "suggestion": "Instead of overwriting, merge DEFAULT_SHORTCUTS with existing shortcuts. For example, add only those default shortcuts whose ids are not already present, or implement a migration that preserves user data while adding new defaults.",
+          "timestamp": "2026-07-12T16:42:34.920Z"
+        }
+      ]
+    }
+  },
+  "updatedAt": "2026-07-12T16:42:34.920Z"
+}
